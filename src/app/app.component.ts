@@ -1,10 +1,18 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'multilingual-app';
+  constructor(private translate: TranslateService) {
+    this.translate.setDefaultLang('en');
+  }
+
+  switchLanguage(language: string) {
+    console.log(language);
+    this.translate.use(language);
+  }
 }
